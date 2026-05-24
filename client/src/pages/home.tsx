@@ -104,7 +104,7 @@ function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={`flex justify-between items-center transition-all duration-300 ${
-            isScrolled ? 'h-16' : 'h-20 sm:h-16 lg:h-20'
+            isScrolled ? 'h-14' : 'h-16 lg:h-20'
           }`}
         >
           <button
@@ -115,7 +115,7 @@ function Header() {
             <img
               src={headerLogoImage}
               alt="ThankYouDeals.com Logo"
-              className={`w-auto transition-all duration-300 ${isScrolled ? 'h-12 sm:h-11' : 'h-14 sm:h-12 lg:h-14'}`}
+              className={`w-auto transition-all duration-300 ${isScrolled ? 'h-10' : 'h-12'}`}
             />
           </button>
 
