@@ -41,3 +41,6 @@ server/public
 
 # Misc
 *.tar.gz
+
+# Editor / IDE workspace files
+*.code-workspace

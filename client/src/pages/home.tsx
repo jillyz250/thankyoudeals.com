@@ -557,20 +557,26 @@ function FeaturesSection() {
   return (
     <section id="what-you-get" className="py-16 lg:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">What You Get</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              A new revenue stream, more return visits, and a stronger relationship with every shopper.
+            </p>
+          </div>
+        </AnimatedSection>
 
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-4">
-            
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          <div className="flex flex-col gap-6 min-w-0">
             {benefits.map((benefit, index) => (
-              <AnimatedSection key={index} delay={index * 0.1}>
-                <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100 mb-6">
-                  <div className="flex items-start space-x-4">
+              <AnimatedSection key={index} delay={index * 0.1} className="flex-1 min-h-0">
+                <div className="h-full bg-white rounded-2xl p-6 shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex items-start space-x-4 h-full">
                     <div className={`w-12 h-12 ${benefit.bgColor} rounded-full flex items-center justify-center flex-shrink-0`}>
-                      <benefit.icon className={`text-xl ${benefit.iconColor}`} />
+                      <benefit.icon className={`h-6 w-6 ${benefit.iconColor}`} />
                     </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-2">{benefit.title}</h4>
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{benefit.title}</h3>
                       <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
                     </div>
                   </div>
@@ -579,12 +585,13 @@ function FeaturesSection() {
             ))}
           </div>
 
-          <AnimatedSection animation={slideInRight}>
-            <div className="rounded-xl shadow-2xl overflow-hidden">
-              <img 
-                src={customerPhoneImage} 
-                alt="Happy customer smiling while looking at phone in grocery store after purchase" 
-                className="w-full h-auto"
+          <AnimatedSection animation={slideInRight} className="min-w-0">
+            <div className="rounded-2xl shadow-2xl overflow-hidden h-full min-h-[400px]">
+              <img
+                src={customerPhoneImage}
+                alt="Happy customer smiling while looking at phone in grocery store after purchase"
+                className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </AnimatedSection>
