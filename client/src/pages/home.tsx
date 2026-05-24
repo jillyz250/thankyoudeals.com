@@ -57,10 +57,11 @@ const slideInRight = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
 };
 
-function AnimatedSection({ children, animation = fadeInUp, delay = 0 }: {
+function AnimatedSection({ children, animation = fadeInUp, delay = 0, className }: {
   children: React.ReactNode;
   animation?: any;
   delay?: number;
+  className?: string;
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -72,6 +73,7 @@ function AnimatedSection({ children, animation = fadeInUp, delay = 0 }: {
       animate={isInView ? "visible" : "hidden"}
       variants={animation}
       transition={{ delay }}
+      className={className}
     >
       {children}
     </motion.div>
@@ -221,20 +223,18 @@ function HeroSection() {
     <section className="bg-gradient-to-br from-light-yellow via-white to-soft-blue py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <AnimatedSection animation={fadeIn}>
-            <div className="flex items-center space-x-6 mb-8">
-              <img 
-                src={logoImage} 
-                alt="ThankYouDeals.com Logo" 
-                className="h-32 w-auto lg:h-40"
+          <AnimatedSection animation={fadeIn} className="min-w-0">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-8">
+              <img
+                src={logoImage}
+                alt="ThankYouDeals.com Logo"
+                className="h-20 sm:h-24 lg:h-32 w-auto flex-shrink-0"
               />
-              <div>
-                <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Turn Every Transaction into a{" "}
-                  <span className="brand-yellow">Thank You</span>—and{" "}
-                  <span className="brand-green">More Revenue</span>
-                </h1>
-              </div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight break-words min-w-0">
+                Turn Every Transaction into a{" "}
+                <span className="brand-yellow">Thank You</span>—and{" "}
+                <span className="brand-green">More Revenue</span>
+              </h1>
             </div>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Our post-purchase deal platform helps retailers reward customers, drive repeat visits, and generate new revenue from advertiser offers that we source and curate.
@@ -323,7 +323,7 @@ function HowItWorksSection() {
         </AnimatedSection>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <AnimatedSection animation={fadeIn}>
+          <AnimatedSection animation={fadeIn} className="min-w-0">
             <h3 className="text-2xl font-bold text-gray-900 mb-8">How it Works</h3>
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
@@ -402,7 +402,7 @@ function AdvertiserSection() {
         </AnimatedSection>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <AnimatedSection animation={fadeIn}>
+          <AnimatedSection animation={fadeIn} className="min-w-0">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Post-Transaction Moments Matter</h3>
             <div className="space-y-6">
               <div className="bg-white p-6 rounded-xl shadow-lg">
@@ -574,7 +574,7 @@ function ResultsSection() {
     <section id="measurable-impact" className="py-12 lg:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <AnimatedSection animation={fadeIn}>
+          <AnimatedSection animation={fadeIn} className="min-w-0">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Measurable Impact</h2>
             
             <div className="grid grid-cols-1 gap-6">
@@ -682,8 +682,8 @@ function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="md:col-span-2">
             <div className="mb-4">
               <img 
                 src={headerLogoImage} 
