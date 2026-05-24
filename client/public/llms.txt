@@ -1,0 +1,39 @@
+# ThankYouDeals.com
+
+> Post-purchase deal platform that helps supermarkets and retailers turn every checkout into a customer retention and revenue opportunity. After a purchase, customers receive an SMS linking to a store-branded page featuring the retailer's weekly deals alongside curated advertiser offers — driving repeat visits for the retailer and qualified, high-intent reach for advertisers.
+
+ThankYouDeals INC operates a B2B platform with two primary audiences:
+- **Retailers** (supermarkets and grocery chains) — generate new ad revenue and increase repeat visits without adding work at the register.
+- **Advertisers** — reach shoppers in the high-intent post-purchase moment via SMS-delivered branded offers.
+
+The demo experience is live at https://keyfood101-junex-juney.thankyoudeals.com.
+Contact: support@thankyoudeals.com.
+
+## Key pages
+
+- [Homepage](https://www.thankyoudeals.com/): Product overview, value props for retailers and advertisers, how it works, measurable impact, live demo, and contact.
+
+## How the platform works
+
+1. **Customer checks out** at the retailer's register and the POS sends a "Thank you for your purchase" SMS containing a link.
+2. **Customer opens a store-branded mobile page** built by ThankYouDeals that highlights the retailer's weekly deals plus complementary advertiser offers curated by ThankYouDeals.
+3. **Retailer earns revenue** from advertiser partnerships and gains repeat store visits from customers re-engaged by the deals.
+
+## What ThankYouDeals measures and reports
+
+- **Revenue** earned from advertiser offers per retailer, broken down by campaign.
+- **Repeat visits** after customers receive the post-checkout experience.
+- **SMS engagement** — open rates, click-throughs, and engagement trends.
+
+## Audience-specific value
+
+**For retailers:** new revenue stream from advertiser-funded offers, higher repeat visit rates, fully branded customer experience, no POS changes required from the retailer.
+
+**For advertisers:** access to a high-intent, just-purchased audience; peak engagement moment immediately after checkout; qualified traffic from shoppers with demonstrated purchasing power.
+
+## Company
+
+- **Legal name:** ThankYouDeals INC
+- **Website:** https://www.thankyoudeals.com/
+- **Contact:** support@thankyoudeals.com
+- **Demo site:** https://keyfood101-junex-juney.thankyoudeals.com
