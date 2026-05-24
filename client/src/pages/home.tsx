@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import logoImage from "@assets/ChatGPT Image Jun 16, 2025, 11_22_12 AM_1750088538557.png";
 import headerLogoImage from "@assets/image_1750091632559.png";
 import keyFoodDemoImage from "@assets/image_1750201789093.png";
 import customerPhoneImage from "@assets/ChatGPT Image Jun 17, 2025, 10_44_54 PM_1750214731570.png";
@@ -161,18 +160,11 @@ function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <AnimatedSection animation={fadeIn} className="min-w-0">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-8">
-              <img
-                src={logoImage}
-                alt="ThankYouDeals.com Logo"
-                className="h-12 sm:h-16 lg:h-20 w-auto flex-shrink-0"
-              />
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight break-words min-w-0">
-                Turn Every Transaction into a{" "}
-                <span className="brand-yellow">Thank You</span>—and{" "}
-                <span className="brand-green">More Revenue</span>
-              </h1>
-            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight break-words min-w-0 mb-8">
+              Turn Every Transaction into a{" "}
+              <span className="brand-yellow">Thank You</span>—and{" "}
+              <span className="brand-green">More Revenue</span>
+            </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Our post-purchase deal platform helps retailers reward customers, drive repeat visits, and generate new revenue from advertiser offers that we source and curate.
             </p>
