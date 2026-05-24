@@ -57,6 +57,15 @@ const slideInRight = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
 };
 
+function scrollToSectionWithHeaderOffset(id: string) {
+  const element = document.getElementById(id);
+  if (!element) return;
+  const headerEl = document.querySelector('header');
+  const headerHeight = headerEl?.getBoundingClientRect().height ?? 64;
+  const y = element.getBoundingClientRect().top + window.pageYOffset - headerHeight - 8;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
 function AnimatedSection({ children, animation = fadeInUp, delay = 0, className }: {
   children: React.ReactNode;
   animation?: any;
@@ -92,12 +101,7 @@ function Header() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = id === 'how-it-works' ? -100 : id === 'advertisers' ? -200 : id === 'retailers' ? -220 : id === 'demo' ? -260 : id === 'about' ? -300 : -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    scrollToSectionWithHeaderOffset(id);
     setIsMobileMenuOpen(false);
   };
 
@@ -195,15 +199,7 @@ function Header() {
 }
 
 function HeroSection() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      // Calculate offset to ensure header is fully visible, especially on mobile
-      const yOffset = id === 'how-it-works' ? -100 : id === 'advertisers' ? -200 : id === 'retailers' ? -220 : -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
+  const scrollToSection = scrollToSectionWithHeaderOffset;
 
   return (
     <section className="bg-gradient-to-br from-light-yellow via-white to-soft-blue py-16 lg:py-24">
@@ -229,7 +225,7 @@ function HeroSection() {
               <Button 
                 id="body-retailers"
                 onClick={() => scrollToSection('retailers')}
-                className="bg-brand-yellow text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                className="bg-brand-yellow text-white px-6 py-3 text-base sm:px-8 sm:py-4 sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                 size="lg"
               >
                 <Store className="mr-2 h-5 w-5" />
@@ -238,7 +234,7 @@ function HeroSection() {
               <Button 
                 id="body-advertisers"
                 onClick={() => scrollToSection('advertisers')}
-                className="bg-brand-green text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                className="bg-brand-green text-white px-6 py-3 text-base sm:px-8 sm:py-4 sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                 size="lg"
               >
                 <TrendingUp className="mr-2 h-5 w-5" />
@@ -263,12 +259,7 @@ function HeroSection() {
 }
 
 function RetailerSection() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const scrollToSection = scrollToSectionWithHeaderOffset;
 
   return (
     <section id="retailers" className="py-16 lg:py-20 bg-white">
@@ -328,12 +319,7 @@ function RetailerSection() {
 }
 
 function HowItWorksSection() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const scrollToSection = scrollToSectionWithHeaderOffset;
 
   return (
     <section id="how-it-works" className="py-16 lg:py-24 bg-white">
@@ -382,7 +368,7 @@ function HowItWorksSection() {
             <div className="mt-8">
               <Button 
                 onClick={() => scrollToSection('contact')}
-                className="bg-brand-yellow text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                className="bg-brand-yellow text-white px-6 py-3 text-base sm:px-8 sm:py-4 sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                 size="lg"
               >
                 <Calendar className="mr-2 h-5 w-5" />
@@ -407,12 +393,7 @@ function HowItWorksSection() {
 }
 
 function AdvertiserSection() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const scrollToSection = scrollToSectionWithHeaderOffset;
 
   return (
     <section id="advertisers" className="py-16 lg:py-24 bg-gradient-to-br from-mint via-white to-soft-blue">
@@ -513,7 +494,7 @@ function AdvertiserSection() {
               <Button 
                 id="body-partner"
                 onClick={() => scrollToSection('contact')}
-                className="bg-brand-green text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                className="bg-brand-green text-white px-6 py-3 text-base sm:px-8 sm:py-4 sm:text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                 size="lg"
               >
                 <Mail className="mr-2 h-5 w-5" />
@@ -722,12 +703,7 @@ function ContactSection() {
 }
 
 function Footer() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const scrollToSection = scrollToSectionWithHeaderOffset;
 
   return (
     <footer className="bg-gray-900 text-white py-12">
