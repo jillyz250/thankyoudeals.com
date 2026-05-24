@@ -1,0 +1,66 @@
+Please update my B2B website with the following changes for Google Analytics 4 tracking of BODY buttons:
+
+1. **Add unique IDs to the BODY buttons in `index.html` (NOT the footer):**
+
+<a href="/retailers" id="body-retailers">For Retailers</a>
+<a href="/advertisers" id="body-advertisers">For Advertisers</a>
+<a href="/demo" id="body-demo">Schedule a Demo</a>
+<a href="/partner" id="body-partner">Partner With Us</a>
+<a href="mailto:business@xzellerate.com" id="body-email">business@xzellerate.com</a>
+
+2. **Right after the existing GA4 tag in the <head> or just before the closing </body>, add this script for future-proof event tracking with DebugView logging:**
+
+<script>
+  // Function to send GA4 events
+  function trackBodyClick(eventName) {
+    console.log("Tracking GA4 event:", eventName);
+    gtag('event', eventName, { location: 'Body' });
+  }
+
+  // Map of body IDs to GA4 event names
+  const bodyLinks = {
+    'Body_Retailers_Click': '#body-retailers',
+    'Body_Advertisers_Click': '#body-advertisers',
+    'Body_Demo_Click': '#body-demo',
+    'Body_Partner_Click': '#body-partner',
+    'Body_Email_Click': '#body-email'
+  };
+
+  // Attach events with retry logic for React/dynamic rendering
+  function attachBodyEvents() {
+    console.log("Attempting to attach body button events...");
+    let foundCount = 0;
+
+    for (const [eventName, selector] of Object.entries(bodyLinks)) {
+      const el = document.querySelector(selector);
+      if (el && !el.dataset.ga4Bound) {
+        el.dataset.ga4Bound = "true"; // Prevent duplicate listeners
+        el.addEventListener('click', () => trackBodyClick(eventName));
+        console.log("Attached tracking to:", selector);
+        foundCount++;
+      }
+    }
+
+    if (foundCount < Object.keys(bodyLinks).length) {
+      // Retry until all body buttons are found (future-proof for React)
+      setTimeout(attachBodyEvents, 500);
+    } else {
+      console.log("All body button tracking attached successfully!");
+    }
+  }
+
+  // Start attaching immediately
+  attachBodyEvents();
+</script>
+
+3. **Save and redeploy the site.**
+
+4. **Test Tracking:**
+   - Open the live site in an incognito browser.
+   - Open DevTools → Console to see debug messages when clicking each body button.
+   - Verify events appear in GA4 DebugView with these names:
+     - Body_Retailers_Click
+     - Body_Advertisers_Click
+     - Body_Demo_Click
+     - Body_Partner_Click
+     - Body_Email_Click

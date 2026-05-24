@@ -1,0 +1,91 @@
+Replit Prompt: Build B2B Homepage for ThankYouDeals.com
+Please build a clean, modern, mobile-optimized homepage for a B2B product called ThankYouDeals.com. The purpose of this site is to attract supermarkets and retail chains who want to monetize post-purchase transactions and drive repeat visits.
+
+The brand tone is friendly, professional, and retail-savvy.
+
+🔷 DESIGN OVERVIEW:
+Keep everything responsive and mobile-first.
+
+Use the provided logo (upload placeholder for now) featuring a smiley receipt icon.
+
+Use a playful but professional font for headlines.
+
+Use light colors like white, light yellow, soft blue, or mint as base, with bold accents (yellow, green, orange) for buttons and CTAs.
+
+Add subtle animations or transitions on scroll if possible (fade-ins or slide-ups).
+
+🔷 PAGE STRUCTURE:
+🏪 1. Hero Section (Top)
+Headline:
+“Turn Every Transaction into a Thank You—and a Return Visit.”
+
+Subheadline:
+“Our post-purchase deal platform helps supermarkets reward customers, drive repeat visits, and generate new revenue from sponsored offers.”
+
+Primary CTA Buttons:
+
+[Schedule a Demo]
+
+[See How It Works]
+
+Background: Show a happy shopper on their phone OR mockup of an SMS + mobile deal page.
+
+🔁 2. How It Works (3-Step Visual)
+Use icon or simple line illustrations to represent each step:
+
+Customer checks out
+“Your POS sends a thank-you SMS with a link.”
+
+Customer taps the link
+“They land on a mobile page with your store's weekly deals + offers.”
+
+You earn & re-engage
+“You generate new revenue and drive customers back in-store.”
+
+🧩 3. What You Get (4 Feature Cards)
+4 evenly spaced horizontal or grid cards:
+
+💵 New Revenue Stream
+Monetize every post-transaction visit
+
+🛒 More Repeat Visits
+Share in-store-only deals or rewards
+
+🧾 Branded Shopper Experience
+Your store. Our tech. Seamless delivery.
+
+⚡ Zero Integration
+No app or setup. Runs via your POS system’s SMS.
+
+⭐ 4. Results / Social Proof
+Use a placeholder testimonial:
+
+“We saw a 20% lift in repeat visits and added new revenue we weren’t earning before.” – Sample Supermarket
+
+Bullet stats:
+
+“100k+ SMS links delivered”
+
+“50%+ CTR from thank-you messages”
+
+“Built for speed—go live in days”
+
+🧠 5. About ThankYouDeals.com
+Short copy block:
+
+“ThankYouDeals.com is a turnkey post-transaction marketing platform built by XZellerate Media. We help grocers and retailers activate their existing customer base by delivering branded weekly deals and national sponsored offers in a mobile-friendly format.”
+
+📞 6. Final CTA Section
+Headline: “Want to See What This Could Look Like for Your Store?”
+CTA Button: [Request Demo] or [Book a Call]
+Contact: business@xzellerate.com
+
+🔗 7. Footer
+Include:
+
+“Powered by XZellerate Media LLC”
+
+Privacy Policy link
+
+Optional contact form or mailto link
+

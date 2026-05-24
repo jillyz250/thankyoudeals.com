@@ -1,0 +1,68 @@
+Please update my B2B website (index.html) to enable GA4 event tracking for header buttons with these exact changes:
+
+---
+
+1. **Add Unique IDs to Header Navigation Buttons**
+
+Update the existing header navigation links so they look exactly like this (keeping the same hrefs):
+
+<a href="/retailers" id="header-retailers">For Retailers</a>
+<a href="/advertisers" id="header-advertisers">For Advertisers</a>
+<a href="/how-it-works" id="header-how">How it Works</a>
+<a href="/demo" id="header-demo">Demo</a>
+<a href="/about" id="header-about">About</a>
+<a href="/contact" id="header-contact">Contact Us</a>
+
+**Important:** Only assign these IDs to the **header** links, not to any duplicate links in the page body.
+
+---
+
+2. **Add Header Button Click Tracking Script**
+
+Right after the existing GA4 `<script>` tag in the `<head>` or just before `</body>`, add this:
+
+<script>
+  // Function to send GA4 events for header clicks
+  function trackHeaderClick(eventName) {
+    gtag('event', eventName, { location: 'Header' });
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Map of header IDs to GA4 event names
+    const headerLinks = {
+      'Header_Retailers_Click': '#header-retailers',
+      'Header_Advertisers_Click': '#header-advertisers',
+      'Header_HowItWorks_Click': '#header-how',
+      'Header_Demo_Click': '#header-demo',
+      'Header_About_Click': '#header-about',
+      'Header_ContactUs_Click': '#header-contact'
+    };
+
+    // Attach event listeners
+    for (const [eventName, selector] of Object.entries(headerLinks)) {
+      const el = document.querySelector(selector);
+      if (el) {
+        el.addEventListener('click', function() {
+          trackHeaderClick(eventName);
+        });
+      }
+    }
+  });
+</script>
+
+---
+
+3. **Save and Redeploy**
+
+After redeploying:
+
+1. Open the site in an **incognito browser**.
+2. Click each header link.
+3. Confirm that GA4 DebugView shows the events:
+
+- Header_Retailers_Click  
+- Header_Advertisers_Click  
+- Header_HowItWorks_Click  
+- Header_Demo_Click  
+- Header_About_Click  
+- Header_ContactUs_Click

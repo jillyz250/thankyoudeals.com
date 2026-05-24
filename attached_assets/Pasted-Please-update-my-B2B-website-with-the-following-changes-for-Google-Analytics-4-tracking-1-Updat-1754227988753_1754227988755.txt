@@ -1,0 +1,76 @@
+Please update my B2B website with the following changes for Google Analytics 4 tracking:
+
+1. **Update Header Buttons with Unique IDs**
+
+In the header navigation section of index.html, add these IDs to the existing <a> tags:
+
+<a id="header-retailers" href="/retailers">For Retailers</a>
+<a id="header-advertisers" href="/advertisers">For Advertisers</a>
+<a id="header-how" href="/how-it-works">How it Works</a>
+<a id="header-demo" href="/demo">Demo</a>
+<a id="header-about" href="/about">About</a>
+<a id="header-contact" href="/contact">Contact Us</a>
+
+These IDs will allow the GA4 script to distinguish header buttons from any body buttons with similar labels.
+
+---
+
+2. **Add the GA4 Tag with Debug Mode in the <head>**
+
+<!-- Google tag (gtag.js) with Debug Mode -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JPK5GV3S1F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // Enable debug mode so events appear in DebugView
+  gtag('config', 'G-JPK5GV3S1F', { 'debug_mode': true });
+</script>
+
+---
+
+3. **Add the Script to Track Header Clicks** (immediately after the GA4 tag)
+
+<script>
+  // Function to send GA4 events
+  function trackHeaderClick(eventName) {
+    gtag('event', eventName, { location: 'Header' });
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Header navigation click tracking using IDs
+    const headerLinks = {
+      'Header_Retailers_Click': '#header-retailers',
+      'Header_Advertisers_Click': '#header-advertisers',
+      'Header_HowItWorks_Click': '#header-how',
+      'Header_Demo_Click': '#header-demo',
+      'Header_About_Click': '#header-about',
+      'Header_ContactUs_Click': '#header-contact'
+    };
+
+    for (const [eventName, selector] of Object.entries(headerLinks)) {
+      const el = document.querySelector(selector);
+      if (el) {
+        el.addEventListener('click', function() {
+          trackHeaderClick(eventName);
+        });
+      }
+    }
+  });
+</script>
+
+---
+
+4. **Save and Redeploy the Site**
+
+After deployment:
+- Open the website in an incognito window.
+- Click each header link.
+- Confirm events appear in GA4 DebugView:
+  - Header_Retailers_Click  
+  - Header_Advertisers_Click  
+  - Header_HowItWorks_Click  
+  - Header_Demo_Click  
+  - Header_About_Click  
+  - Header_ContactUs_Click

@@ -1,0 +1,43 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build output
+dist
+build
+.next
+.vercel
+
+# Vite
+vite.config.ts.*
+
+# Env / secrets — NEVER commit
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+.vscode
+.idea
+*.swp
+
+# Server-built assets
+server/public
+
+# Replit internals (not useful outside Replit)
+.local/
+.agents/
+.upm/
+
+# Misc
+*.tar.gz

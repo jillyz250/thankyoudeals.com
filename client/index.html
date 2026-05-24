@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_clean.png?v=1">
+    <link rel="shortcut icon" href="/favicon_clean.png?v=1">
+    <link rel="apple-touch-icon" href="/favicon_clean.png?v=1">
+    <title>ThankYouDeals.com - Turn Every Transaction into a Thank You</title>
+    <meta name="description" content="Post-purchase deal platform helping supermarkets reward customers, drive repeat visits, and generate new revenue from sponsored offers. Schedule your demo today." />
+    <meta property="og:title" content="ThankYouDeals.com - Turn Every Transaction into a Thank You" />
+    <meta property="og:description" content="Our post-purchase deal platform helps supermarkets reward customers, drive repeat visits, and generate new revenue from sponsored offers." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Impact Site Verification -->
+    <meta name='impact-site-verification' value='44929781-2b45-40b0-96e6-04066c042ecf'>
+    
+    <!-- Google tag (gtag.js) with Debug Mode -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JPK5GV3S1F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // Enable debug mode so I can see events in GA4 DebugView
+      gtag('config', 'G-JPK5GV3S1F', { 'debug_mode': true });
+    </script>
+
+    <!-- Header Button Click Tracking -->
+    <script>
+      // Function to send GA4 events for header clicks
+      function trackHeaderClick(eventName) {
+        console.log('Tracking GA4 event:', eventName);
+        gtag('event', eventName, { location: 'Header' });
+      }
+
+      // Function to setup event listeners with retry mechanism
+      function setupHeaderTracking() {
+        // Map of header IDs to GA4 event names
+        const headerLinks = {
+          'Header_Retailers_Click': '#header-retailers',
+          'Header_Advertisers_Click': '#header-advertisers',
+          'Header_HowItWorks_Click': '#header-how',
+          'Header_Demo_Click': '#header-demo',
+          'Header_About_Click': '#header-about',
+          'Header_ContactUs_Click': '#header-contact'
+        };
+
+        let foundElements = 0;
+        
+        // Attach event listeners
+        for (const [eventName, selector] of Object.entries(headerLinks)) {
+          const el = document.querySelector(selector);
+          if (el) {
+            foundElements++;
+            console.log('Found element:', selector);
+            el.addEventListener('click', function() {
+              trackHeaderClick(eventName);
+            });
+          } else {
+            console.log('Element not found:', selector);
+          }
+        }
+        
+        console.log('Header tracking setup complete. Found', foundElements, 'elements.');
+        return foundElements > 0;
+      }
+
+      // Try to setup tracking when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function() {
+        console.log('DOM loaded, setting up header tracking...');
+        
+        // Try immediately
+        if (!setupHeaderTracking()) {
+          // If no elements found, try again after a short delay (React might still be rendering)
+          setTimeout(function() {
+            console.log('Retrying header tracking setup...');
+            setupHeaderTracking();
+          }, 1000);
+        }
+      });
+    </script>
+
+    <!-- Body Button Click Tracking -->
+    <script>
+      // Function to send GA4 events
+      function trackBodyClick(eventName) {
+        console.log("Tracking GA4 event:", eventName);
+        gtag('event', eventName, { location: 'Body' });
+      }
+
+      // Map of body IDs to GA4 event names
+      const bodyLinks = {
+        'Body_Retailers_Click': '#body-retailers',
+        'Body_Advertisers_Click': '#body-advertisers',
+        'Body_Email_Click': '#body-email',
+        'Body_PartnerWithUs_Click': '#body-partner'
+      };
+
+      // Attach events with retry logic for React/dynamic rendering
+      function attachBodyEvents() {
+        console.log("Attempting to attach body button events...");
+        let foundCount = 0;
+
+        for (const [eventName, selector] of Object.entries(bodyLinks)) {
+          const el = document.querySelector(selector);
+          if (el && !el.dataset.ga4Bound) {
+            el.dataset.ga4Bound = "true"; // Prevent duplicate listeners
+            el.addEventListener('click', () => trackBodyClick(eventName));
+            console.log("Attached tracking to:", selector);
+            foundCount++;
+          }
+        }
+
+        if (foundCount < Object.keys(bodyLinks).length) {
+          // Retry until all body buttons are found (future-proof for React)
+          setTimeout(attachBodyEvents, 500);
+        } else {
+          console.log("All body button tracking attached successfully!");
+        }
+      }
+
+      // Start attaching immediately
+      attachBodyEvents();
+    </script>
+
+    <!-- Live Example Demo Tracking -->
+    <script>
+      function setupBodyLiveExampleTracking() {
+        const liveExampleBtn = document.getElementById('body-live-example');
+        if (liveExampleBtn && !liveExampleBtn.dataset.ga4Bound) {
+          console.log("Found element: #body-live-example");
+          liveExampleBtn.dataset.ga4Bound = "true"; // Prevent duplicate listeners
+          liveExampleBtn.addEventListener('click', function() {
+            console.log("Tracking GA4 event: Body_LiveExample_Click");
+            gtag('event', 'Body_LiveExample_Click', { location: 'Body' });
+          });
+          console.log("Body Live Example tracking attached.");
+          return true;
+        }
+        return false;
+      }
+
+      // Retry until the element is found (React-safe)
+      document.addEventListener("DOMContentLoaded", function() {
+        console.log("DOM loaded, looking for #body-live-example...");
+        let attempts = 0;
+        const interval = setInterval(() => {
+          attempts++;
+          if (setupBodyLiveExampleTracking() || attempts > 10) {
+            clearInterval(interval);
+          }
+        }, 500);
+      });
+    </script>
+
+    <!-- Footer Click Tracking -->
+    <script>
+      // Footer click tracking function
+      function trackFooterClick(eventName) {
+        console.log("Tracking GA4 event:", eventName);
+        gtag('event', eventName, { location: 'Footer' });
+      }
+
+      // Map of footer IDs to GA4 event names
+      const footerLinks = {
+        'Footer_Retailers_Click': '#footer-retailers',
+        'Footer_Advertisers_Click': '#footer-advertisers',
+        'Footer_HowItWorks_Click': '#footer-how-it-works',
+        'Footer_Demo_Click': '#footer-demo',
+        'Footer_About_Click': '#footer-about',
+        'Footer_PrivacyPolicy_Click': '#footer-privacy-policy',
+        'Footer_Email_Click': '#footer-email',
+        'Footer_ScheduleDemo_Click': '#footer-schedule-demo'
+      };
+
+      // Attach footer events with retry logic for React/dynamic rendering
+      function attachFooterEvents() {
+        console.log("Attempting to attach footer button events...");
+        let foundCount = 0;
+
+        for (const [eventName, selector] of Object.entries(footerLinks)) {
+          const el = document.querySelector(selector);
+          if (el && !el.dataset.ga4FooterBound) {
+            el.dataset.ga4FooterBound = "true"; // Prevent duplicate listeners
+            el.addEventListener('click', () => trackFooterClick(eventName));
+            console.log("Attached footer tracking to:", selector);
+            foundCount++;
+          }
+        }
+
+        console.log(`Footer tracking setup complete. Found ${foundCount} elements.`);
+
+        if (foundCount < Object.keys(footerLinks).length) {
+          // Retry until all footer buttons are found (future-proof for React)
+          setTimeout(attachFooterEvents, 500);
+        }
+      }
+
+      // Start attaching footer events when DOM is ready
+      document.addEventListener("DOMContentLoaded", function() {
+        console.log("DOM loaded, setting up footer tracking...");
+        attachFooterEvents();
+        
+        // Additional retry for React dynamic rendering
+        setTimeout(() => {
+          console.log("Retrying footer tracking setup...");
+          attachFooterEvents();
+        }, 1000);
+      });
+    </script>
+    
+    <!-- FlexOffers Verification -->
+    <meta name="fo-verify" content="5ee847c6-27bd-4569-9cca-09e371e35c16" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
+    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+  </body>
+</html>
