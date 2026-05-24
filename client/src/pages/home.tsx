@@ -12,7 +12,6 @@ import logoImage from "@assets/ChatGPT Image Jun 16, 2025, 11_22_12 AM_175008853
 import headerLogoImage from "@assets/image_1750091632559.png";
 import keyFoodDemoImage from "@assets/image_1750201789093.png";
 import customerPhoneImage from "@assets/ChatGPT Image Jun 17, 2025, 10_44_54 PM_1750214731570.png";
-import happyCustomerImage from "@assets/ChatGPT Image Jun 17, 2025, 11_01_16 PM_1750215689330.png";
 import howItWorksImage from "@assets/ChatGPT Image Jun 17, 2025, 11_01_16 PM_1750216030691.png";
 import advertiserImage from "@assets/ChatGPT Image Jun 17, 2025, 11_19_47 PM_1750216912862.png";
 import { 
@@ -272,18 +271,57 @@ function RetailerSection() {
   };
 
   return (
-    <section id="retailers" className="py-8 lg:py-12 bg-white">
+    <section id="retailers" className="py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
-          <div className="text-center mb-8">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">For Supermarkets & Retailers</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">For Supermarkets &amp; Retailers</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Turn every checkout into a customer retention opportunity while generating new revenue streams
+              Turn every checkout into a customer retention opportunity while generating new revenue streams.
             </p>
           </div>
         </AnimatedSection>
 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <AnimatedSection delay={0}>
+            <div className="h-full bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 bg-brand-yellow rounded-xl flex items-center justify-center mb-5 shadow-md">
+                <DollarSign className="text-white h-7 w-7" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Monetize Every Checkout</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Earn new revenue from curated advertiser offers we source and place inside your post-purchase
+                experience — no extra work at the register.
+              </p>
+            </div>
+          </AnimatedSection>
 
+          <AnimatedSection delay={0.1}>
+            <div className="h-full bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 bg-brand-green rounded-xl flex items-center justify-center mb-5 shadow-md">
+                <RefreshCw className="text-white h-7 w-7" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Drive Repeat Visits</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Pair your weekly deals with timely offers so shoppers come back sooner and spend more on their
+                next trip to your store.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.2}>
+            <div className="h-full bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 bg-brand-orange rounded-xl flex items-center justify-center mb-5 shadow-md">
+                <Heart className="text-white h-7 w-7" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Create Loyalty</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Reward customers in the moment they're happiest — right after they've checked out — with a
+                fully branded experience that strengthens your relationship.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
       </div>
     </section>
   );
@@ -558,44 +596,62 @@ function FeaturesSection() {
 
 function ResultsSection() {
   return (
-    <section id="measurable-impact" className="py-12 lg:py-16 bg-white">
+    <section id="measurable-impact" className="py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <AnimatedSection animation={fadeIn} className="min-w-0">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Measurable Impact</h2>
-            
-            <div className="grid grid-cols-1 gap-6">
-              <div className="bg-white p-6 rounded-xl shadow-lg">
-                <div className="text-3xl mb-4">💰</div>
-                <div className="text-xl font-bold brand-yellow mb-2">Revenue</div>
-                <div className="text-gray-800 font-medium mb-2">We'll report on earnings from advertiser offers</div>
-                <div className="text-gray-600 text-sm">See exactly how much incremental revenue your store generates—broken down by campaign.</div>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg">
-                <div className="text-3xl mb-4">🔁</div>
-                <div className="text-xl font-bold brand-green mb-2">Visits</div>
-                <div className="text-gray-800 font-medium mb-2">We'll report on repeat visits</div>
-                <div className="text-gray-600 text-sm">Track how often customers return after receiving our customized post-checkout experiences.</div>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg">
-                <div className="text-3xl mb-4">📲</div>
-                <div className="text-xl font-bold brand-orange mb-2">Engagement</div>
-                <div className="text-gray-800 font-medium mb-2">We'll measure SMS performance</div>
-                <div className="text-gray-600 text-sm">Review open rates, click-throughs, and engagement trends to see what's resonating.</div>
+        <AnimatedSection>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Measurable Impact</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Clear reporting on the metrics that matter — so you can see exactly what's working.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          <AnimatedSection delay={0}>
+            <div className="h-full bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="text-4xl mb-4">💰</div>
+              <div className="text-xl font-bold brand-yellow mb-2">Revenue</div>
+              <div className="text-gray-800 font-semibold mb-2">Earnings from advertiser offers</div>
+              <div className="text-gray-600 text-sm leading-relaxed">
+                See exactly how much incremental revenue your store generates — broken down by campaign.
               </div>
             </div>
           </AnimatedSection>
 
-          <AnimatedSection animation={slideInRight}>
-            <div className="rounded-xl shadow-2xl overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Analytics dashboard showing business metrics" 
-                className="w-full h-auto"
-              />
+          <AnimatedSection delay={0.1}>
+            <div className="h-full bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="text-4xl mb-4">🔁</div>
+              <div className="text-xl font-bold brand-green mb-2">Visits</div>
+              <div className="text-gray-800 font-semibold mb-2">Repeat customer visits</div>
+              <div className="text-gray-600 text-sm leading-relaxed">
+                Track how often customers return after receiving our customized post-checkout experiences.
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.2}>
+            <div className="h-full bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="text-4xl mb-4">📲</div>
+              <div className="text-xl font-bold brand-orange mb-2">Engagement</div>
+              <div className="text-gray-800 font-semibold mb-2">SMS performance</div>
+              <div className="text-gray-600 text-sm leading-relaxed">
+                Review open rates, click-throughs, and engagement trends to see what's resonating.
+              </div>
             </div>
           </AnimatedSection>
         </div>
+
+        <AnimatedSection animation={fadeIn}>
+          <div className="max-w-4xl mx-auto rounded-2xl shadow-2xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900"
+              alt="Analytics dashboard showing business metrics"
+              className="w-full h-auto"
+              loading="lazy"
+            />
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
@@ -735,9 +791,9 @@ function Footer() {
                 </button>
               </li>
               <li>
-                <a 
+                <a
                   id="footer-privacy-policy"
-                  href="https://thankyoudeals-privacy-page-link.replit.app/" 
+                  href="/privacy"
                   className="hover:text-white transition-colors"
                 >
                   Privacy Policy
