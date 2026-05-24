@@ -1,31 +1,19 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
 import logoImage from "@assets/ChatGPT Image Jun 16, 2025, 11_22_12 AM_1750088538557.png";
 import headerLogoImage from "@assets/image_1750091632559.png";
 import keyFoodDemoImage from "@assets/image_1750201789093.png";
 import customerPhoneImage from "@assets/ChatGPT Image Jun 17, 2025, 10_44_54 PM_1750214731570.png";
 import howItWorksImage from "@assets/ChatGPT Image Jun 17, 2025, 11_01_16 PM_1750216030691.png";
 import advertiserImage from "@assets/ChatGPT Image Jun 17, 2025, 11_19_47 PM_1750216912862.png";
-import { 
-  Receipt, 
-  DollarSign, 
-  ShoppingCart, 
-  Store, 
-  Zap, 
-  ScanBarcode, 
-  Smartphone, 
+import {
+  DollarSign,
+  Store,
+  Smartphone,
   TrendingUp,
   Calendar,
   Play,
-  Phone,
   Mail,
   Menu,
   X,
@@ -33,14 +21,6 @@ import {
   RefreshCw,
   Heart
 } from "lucide-react";
-
-interface DemoRequest {
-  name: string;
-  email: string;
-  company: string;
-  phone?: string;
-  message?: string;
-}
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
