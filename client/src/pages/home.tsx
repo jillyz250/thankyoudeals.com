@@ -103,8 +103,8 @@ function Header() {
   };
 
   const navLinks = [
-    { id: 'retailers', label: 'For Retailers' },
-    { id: 'advertisers', label: 'For Advertisers' },
+    { id: 'retailers', label: 'Retailers' },
+    { id: 'advertisers', label: 'Advertisers' },
     { id: 'how-it-works', label: 'How it Works' },
     { id: 'demo', label: 'Demo' },
     { id: 'about', label: 'About' },
@@ -142,7 +142,7 @@ function Header() {
                 key={link.id}
                 id={`header-${link.id}`}
                 onClick={() => scrollToSection(link.id)}
-                className="relative px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors group"
+                className="relative px-3 py-2 text-sm font-semibold text-black hover:text-gray-700 transition-colors group"
               >
                 {link.label}
                 <span className="absolute left-3 right-3 bottom-1 h-0.5 bg-brand-yellow origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
@@ -177,7 +177,7 @@ function Header() {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-left px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+                className="text-left px-3 py-3 rounded-md text-base font-semibold text-black hover:bg-gray-100 transition-colors"
               >
                 {link.label}
               </button>
