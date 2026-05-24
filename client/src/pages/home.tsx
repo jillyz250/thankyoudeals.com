@@ -165,7 +165,7 @@ function HeroSection() {
               <img
                 src={logoImage}
                 alt="ThankYouDeals.com Logo"
-                className="h-20 sm:h-24 lg:h-32 w-auto flex-shrink-0"
+                className="h-12 sm:h-16 lg:h-20 w-auto flex-shrink-0"
               />
               <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight break-words min-w-0">
                 Turn Every Transaction into a{" "}
