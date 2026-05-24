@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,6 +29,7 @@ import {
   Phone,
   Mail,
   Menu,
+  X,
   Quote,
   RefreshCw,
   Heart
@@ -82,11 +83,18 @@ function AnimatedSection({ children, animation = fadeInUp, delay = 0, className 
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      // Calculate offset to ensure header is fully visible, especially on mobile
       const yOffset = id === 'how-it-works' ? -100 : id === 'advertisers' ? -200 : id === 'retailers' ? -220 : id === 'demo' ? -260 : id === 'about' ? -300 : -80;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
@@ -94,115 +102,94 @@ function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const navLinks = [
+    { id: 'retailers', label: 'For Retailers' },
+    { id: 'advertisers', label: 'For Advertisers' },
+    { id: 'how-it-works', label: 'How it Works' },
+    { id: 'demo', label: 'Demo' },
+    { id: 'about', label: 'About' },
+  ];
+
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
+        isScrolled
+          ? 'bg-white/85 shadow-md border-b border-gray-200/60'
+          : 'bg-white/70 border-b border-transparent'
+      }`}
+    >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <div className="flex items-center space-x-2">
-              <img 
-                src={headerLogoImage} 
-                alt="ThankYouDeals.com Logo" 
-                className="h-10 w-auto"
-              />
-            </div>
-          </div>
-          
-          <div className="hidden md:flex items-center space-x-6">
-            <button 
-              id="header-retailers"
-              onClick={() => scrollToSection('retailers')}
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              For Retailers
-            </button>
-            <button 
-              id="header-advertisers"
-              onClick={() => scrollToSection('advertisers')}
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              For Advertisers
-            </button>
-            <button 
-              id="header-how"
-              onClick={() => scrollToSection('how-it-works')}
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              How it Works
-            </button>
-            <button 
-              id="header-demo"
-              onClick={() => scrollToSection('demo')}
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Demo
-            </button>
-            <button 
-              id="header-about"
-              onClick={() => scrollToSection('about')}
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              About
-            </button>
-            <Button 
+        <div
+          className={`flex justify-between items-center transition-all duration-300 ${
+            isScrolled ? 'h-14' : 'h-16 lg:h-20'
+          }`}
+        >
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow rounded-md"
+            aria-label="ThankYouDeals.com home"
+          >
+            <img
+              src={headerLogoImage}
+              alt="ThankYouDeals.com Logo"
+              className={`w-auto transition-all duration-300 ${isScrolled ? 'h-9' : 'h-10 lg:h-12'}`}
+            />
+          </button>
+
+          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                id={`header-${link.id}`}
+                onClick={() => scrollToSection(link.id)}
+                className="relative px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors group"
+              >
+                {link.label}
+                <span className="absolute left-3 right-3 bottom-1 h-0.5 bg-brand-yellow origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
+              </button>
+            ))}
+            <Button
               id="header-contact"
               onClick={() => scrollToSection('contact')}
-              className="bg-brand-yellow text-white hover:bg-yellow-600 transition-colors font-medium"
+              className="ml-2 bg-brand-yellow text-white hover:bg-yellow-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 font-semibold shadow-sm"
             >
               Contact Us
             </Button>
           </div>
-          
-          <button 
-            className="md:hidden text-gray-600"
+
+          <button
+            className="md:hidden p-2 -mr-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
           >
-            <Menu className="text-xl" />
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
-        
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t">
-            <div className="flex flex-col space-y-4">
-              <button 
-                onClick={() => scrollToSection('retailers')}
-                className="text-gray-600 hover:text-gray-900 transition-colors text-left"
+
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
+            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="py-4 border-t border-gray-200 flex flex-col space-y-1">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="text-left px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors"
               >
-                For Retailers
+                {link.label}
               </button>
-              <button 
-                onClick={() => scrollToSection('advertisers')}
-                className="text-gray-600 hover:text-gray-900 transition-colors text-left"
-              >
-                For Advertisers
-              </button>
-              <button 
-                onClick={() => scrollToSection('how-it-works')}
-                className="text-gray-600 hover:text-gray-900 transition-colors text-left"
-              >
-                How it Works
-              </button>
-              <button 
-                onClick={() => scrollToSection('demo')}
-                className="text-gray-600 hover:text-gray-900 transition-colors text-left"
-              >
-                Demo
-              </button>
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="text-gray-600 hover:text-gray-900 transition-colors text-left"
-              >
-                About
-              </button>
-              <Button 
-                onClick={() => scrollToSection('contact')}
-                className="bg-brand-yellow text-white hover:bg-yellow-600 transition-colors font-medium w-full"
-              >
-                Contact Us
-              </Button>
-            </div>
+            ))}
+            <Button
+              onClick={() => scrollToSection('contact')}
+              className="mt-2 bg-brand-yellow text-white hover:bg-yellow-600 transition-colors font-semibold w-full"
+            >
+              Contact Us
+            </Button>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   );
