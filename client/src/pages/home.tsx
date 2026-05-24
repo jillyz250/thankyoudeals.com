@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import logoImage from "@assets/ChatGPT Image Jun 16, 2025, 11_22_12 AM_1750088538557.png";
@@ -71,14 +71,6 @@ function AnimatedSection({ children, animation = fadeInUp, delay = 0, className 
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const scrollToSection = (id: string) => {
     scrollToSectionWithHeaderOffset(id);
@@ -94,54 +86,39 @@ function Header() {
   ];
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
-        isScrolled
-          ? 'bg-white/85 shadow-md border-b border-gray-200/60'
-          : 'bg-white/70 border-b border-transparent'
-      }`}
-    >
+    <header className="bg-white shadow-sm sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className={`flex justify-between items-center transition-all duration-300 ${
-            isScrolled ? 'h-14' : 'h-16 lg:h-20'
-          }`}
-        >
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow rounded-md"
-            aria-label="ThankYouDeals.com home"
-          >
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center">
             <img
               src={headerLogoImage}
               alt="ThankYouDeals.com Logo"
-              className={`w-auto transition-all duration-300 ${isScrolled ? 'h-10' : 'h-12'}`}
+              className="h-10 w-auto"
             />
-          </button>
+          </div>
 
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 id={`header-${link.id}`}
                 onClick={() => scrollToSection(link.id)}
-                className="relative px-3 py-2 text-sm font-semibold text-black hover:text-gray-700 transition-colors group"
+                className="text-black hover:text-gray-700 font-semibold transition-colors"
               >
                 {link.label}
-                <span className="absolute left-3 right-3 bottom-1 h-0.5 bg-brand-yellow origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
               </button>
             ))}
             <Button
               id="header-contact"
               onClick={() => scrollToSection('contact')}
-              className="ml-2 bg-brand-yellow text-white hover:bg-yellow-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 font-semibold shadow-sm"
+              className="bg-brand-yellow text-white hover:bg-yellow-600 transition-colors font-medium"
             >
               Contact Us
             </Button>
           </div>
 
           <button
-            className="md:hidden p-2 -mr-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow"
+            className="md:hidden text-gray-700"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
@@ -150,29 +127,27 @@ function Header() {
           </button>
         </div>
 
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
-            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <div className="py-4 border-t border-gray-200 flex flex-col space-y-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-left px-3 py-3 rounded-md text-base font-semibold text-black hover:bg-gray-100 transition-colors"
+        {isMobileMenuOpen && (
+          <div className="md:hidden py-4 border-t">
+            <div className="flex flex-col space-y-4">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-black hover:text-gray-700 font-semibold transition-colors text-left"
+                >
+                  {link.label}
+                </button>
+              ))}
+              <Button
+                onClick={() => scrollToSection('contact')}
+                className="bg-brand-yellow text-white hover:bg-yellow-600 transition-colors font-medium w-full"
               >
-                {link.label}
-              </button>
-            ))}
-            <Button
-              onClick={() => scrollToSection('contact')}
-              className="mt-2 bg-brand-yellow text-white hover:bg-yellow-600 transition-colors font-semibold w-full"
-            >
-              Contact Us
-            </Button>
+                Contact Us
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
       </nav>
     </header>
   );
