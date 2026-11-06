@@ -11,7 +11,7 @@ import {
   type InsertDemoRequest,
   type InsertPageView,
   type AnalyticsStats,
-} from "@shared/schema";
+} from "../shared/schema.js";
 
 type PageViewRow = { path: string; referrer: string | null; visitorId: string | null; createdAt: string };
 

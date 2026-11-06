@@ -1,4 +1,4 @@
-import { parseDays, getAnalytics } from "../server/analytics";
+import { parseDays, getAnalytics } from "../server/analytics.js";
 
 export async function GET(request: Request): Promise<Response> {
   try {
