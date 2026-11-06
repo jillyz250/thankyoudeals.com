@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { insertDemoRequestSchema } from "../shared/schema";
-import { storage } from "../server/storage";
+import { insertDemoRequestSchema } from "../shared/schema.js";
+import { storage } from "../server/storage.js";
 
 export async function POST(request: Request): Promise<Response> {
   try {

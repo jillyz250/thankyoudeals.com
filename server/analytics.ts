@@ -1,5 +1,5 @@
-import { insertPageViewSchema } from "../shared/schema";
-import { storage } from "./storage";
+import { insertPageViewSchema } from "../shared/schema.js";
+import { storage } from "./storage.js";
 
 const BOT_PATTERN = /bot|crawl|spider|slurp|preview|headless|lighthouse|facebookexternalhit/i;
 

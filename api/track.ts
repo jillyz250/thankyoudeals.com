@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { trackPageView } from "../server/analytics";
+import { trackPageView } from "../server/analytics.js";
 
 export async function POST(request: Request): Promise<Response> {
   try {

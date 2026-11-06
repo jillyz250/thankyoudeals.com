@@ -1,4 +1,4 @@
-import { storage } from "../server/storage";
+import { storage } from "../server/storage.js";
 
 export async function GET(): Promise<Response> {
   try {
