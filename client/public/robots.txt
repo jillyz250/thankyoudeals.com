@@ -3,6 +3,7 @@
 # Default: allow all standard search engines
 User-agent: *
 Allow: /
+Disallow: /admin
 
 # AI / LLM crawlers — explicitly allowed for visibility in AI search and assistants
 User-agent: GPTBot
